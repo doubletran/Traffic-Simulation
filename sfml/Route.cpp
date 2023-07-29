@@ -5,6 +5,15 @@ Route::Route(const Street& str, int seg_idx) {
 	segment = street->segArray[seg_idx];
 	this->seg_idx = seg_idx;
 }
+Route::Route(const Route& route) {
+
+	street = new Street(*route.street);
+	segment = route.segment;
+	seg_idx = route.seg_idx;
+	lane_pos = route.lane_pos;
+	lane_idx = route.lane_idx;
+
+}
 
 Point Route::getTail(const int idx) const {
 	return street->laneArray[idx].segArray[seg_idx].tail;

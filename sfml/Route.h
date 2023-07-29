@@ -16,8 +16,8 @@ public:
 	int lane_idx;
 	Route();
 	Route(const Street& str, int seg_idx);
+	Route(const Route& route);
 
-	
 	
 	~Route() {
 		if (street) {
@@ -25,6 +25,7 @@ public:
 		}
 		street = nullptr;
 	}
+	void init();
 	
 	void setLane(const int lane);
 	void setLane(const sf::Vector2f pos);
