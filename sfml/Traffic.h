@@ -23,6 +23,7 @@ public:
 	void place(Auto& vehicle);
 	bool guide(Auto& vehicle, const sf::Vector2f& dest);
 	int getNearVertex(const sf::Vector2f& pos);
+	void findPath();
 	vector<Street>streetArray;
 	void addStreet(const Street& newStreet);
 	int addPoint(const Point& pt);
