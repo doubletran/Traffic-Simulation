@@ -4,7 +4,16 @@ Route::Route(const Street& str, int seg_idx) {
 	street = new Street(str);
 	segment = street->segArray[seg_idx];
 	this->seg_idx = seg_idx;
+	weight = segment.length;
+	
 }
+Route::Route(const Street& str, int seg_idx, const Segment& seg) {
+	street = new Street(str);
+	this->segment = seg;
+	this->seg_idx = seg_idx;
+	this->weight = segment.length;
+}
+
 Route::Route(const Route& route) {
 
 	street = new Street(*route.street);
@@ -12,6 +21,7 @@ Route::Route(const Route& route) {
 	seg_idx = route.seg_idx;
 	lane_pos = route.lane_pos;
 	lane_idx = route.lane_idx;
+	weight = route.weight;
 
 }
 
@@ -87,4 +97,7 @@ bool Route::divide(vector<Point> pts, vector<Route>& pieces) {
 	return true;
 	
 
+}
+int Route::getWeight() {
+	return weight;
 }

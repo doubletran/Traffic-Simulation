@@ -41,8 +41,9 @@ void System::run() {
 }
 void System::render() {
 	window.clear(sf::Color::White);
-    window.draw(traffic);  
-    for (auto const& vehicle : vehicles) {
+   window.draw(traffic);  
+    for (auto  &vehicle : vehicles) {
+       // cout << vehicle.pos.y << " " << vehicle.pos.y << endl;
         window.draw(vehicle);
     }
 
@@ -50,11 +51,13 @@ void System::render() {
 }
 void System::update() {
 	//car.seek(sf::Vector2f(0, 0));
+    
     for (auto& vehicle : vehicles) {
         traffic.guide(vehicle, sf::Vector2f(WIDTH / 2, 15));
         //vehicle.follow(traffic.streetArray[0].segArray[0]);
         vehicle.update();
     }
+    
 }
 void System::processEvents() {
 	sf::Event event;
@@ -69,7 +72,7 @@ void System::processEvents() {
 int main()
 {
 
-    RouteGraph graph;
+   
     /*
     vector<Point> pts;
 

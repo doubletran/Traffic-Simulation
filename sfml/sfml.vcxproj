@@ -131,7 +131,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Auto.cpp" />
-    <ClCompile Include="Graph.cpp" />
     <ClCompile Include="Queue.cpp" />
     <ClCompile Include="Route.cpp" />
     <ClCompile Include="StreetBuilding\Lane.cpp" />

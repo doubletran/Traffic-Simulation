@@ -4,12 +4,9 @@ class Route
 {
 	Street* street;
 	Segment segment;
-	Route(const Street& str, int seg_idx, const Segment& seg) {
-		street = new Street(str);
-		this->segment = seg;
-		this->seg_idx = seg_idx;
-	}
+	int weight;
 	int seg_idx;
+	Route(const Street& str, int seg_idx, const Segment& seg);
 
 public:
 	LanePos lane_pos;
@@ -32,6 +29,7 @@ public:
 	bool divide(vector<Point> pts, vector<Route>&pieces);
 	bool divide(const Point& cutoff, vector<Route>& pieces);
 	int getCurrLane() { return lane_idx; }
+
 	Segment getSegment() const;
 	Segment getSegment(const int lane_idx) const;
 	Point getTail(const int lane_idx) const;
@@ -41,5 +39,9 @@ public:
 	
 	bool endRoute(const sf::Vector2f pos);
 	
+	int getWeight();
+	operator int() const {
+		return weight;
+	}
 	
 };
