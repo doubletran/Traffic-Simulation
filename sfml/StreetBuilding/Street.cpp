@@ -2,6 +2,7 @@
 
 
 Street::Street(const Point& start, const Point& end, const char* name): Lane(start, end) {
+
 	lane++;
 	laneArray.emplace_back(*this);
 	setName(name);

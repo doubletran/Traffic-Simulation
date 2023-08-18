@@ -5,33 +5,51 @@
 #include "Auto.h"
 
 
-class Traffic: public sf::Drawable, sf::Transformable
+class Traffic: public sf::Drawable, sf::Transformable, protected Graph <Route, Point>
 {
-	int size;
-	vector<vector<Route*>> routeMatrix;
-	RouteGraph graph;
-	vector<Point>base;
+	vector<Street> streetArray;
+
+
+
+
 	
 	int getVertex(const Point& pt);
+	int getNearVertex(const sf::Vector2f& pos);
 	
 
 public:
-	void addRoute(int, int, const Route&);
-	void deleteRoute(int, int);
+
 	void addIntersection(int vhead, int vtail, const Point&, Route&);
 	
 	void place(Auto& vehicle);
 	bool guide(Auto& vehicle, const sf::Vector2f& dest);
-	int getNearVertex(const sf::Vector2f& pos);
-	void findPath();
-	vector<Street>streetArray;
+	
 	void addStreet(const Street& newStreet);
-	int addPoint(const Point& pt);
+
+
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const {
-		for (auto street : streetArray) {
+		for (auto &street : streetArray) {
 			target.draw(street);
 		}
 	}
 
 };
 
+/*
+class Intersection {
+	Point pt;
+	int size;
+	vector <vector<Route>>pairs;
+	Intersection(const Point& pt, vector<Route>& routes) {
+		this->pt = pt;
+		size = 0;
+		for (auto& route : routes) {
+			pairs.push_back(vector<Route>());
+			route.divide(pt, pairs[size++]);
+		}
+
+	}
+	void getDivisions()
+};
+
+*/

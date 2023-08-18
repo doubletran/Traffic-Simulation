@@ -3,14 +3,15 @@
 #include "Lib.h"
 #include "Queue.h"
 
-class Auto:public sf::Drawable , public sf::Transformable
+class Auto: public sf::Drawable, sf::Transformable
 {
 	RouteQueue routeTracker;
 	sf::RectangleShape sprite;
+	sf::RectangleShape rect;
 	
 	sf::Vector2f acc;
 	sf::Vector2f vel;
-	float maxspeed = 0.1f;
+	float maxspeed = 1.f;
 	float maxforce = 0.01f;
 public:
 	sf::Vector2f pos;
@@ -32,12 +33,11 @@ public:
 	void follow(const vector<Segment>& path);
 	void update();
 	void applyForce(sf::Vector2f force);
-
-	
-
 	
 	
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const {
+
+	
 		target.draw(sprite);
 	}
 };

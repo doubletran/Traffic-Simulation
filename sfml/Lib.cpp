@@ -48,3 +48,9 @@ bool within(float x, float a, float b) {
 	
 
 }
+bool include(const vector<int>& src, int target) {
+	for (auto item : src) {
+		if (item == target) return true;
+	}
+	return false;
+}

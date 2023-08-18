@@ -1,6 +1,7 @@
 #include "Auto.h"
 Auto::Auto() : routeTracker() {};
 Auto::Auto(sf::Vector2f pos) : routeTracker(){
+
 	sprite.setSize(sf::Vector2f(30.f, 30.f));
 	this->pos = pos;
 	this->vel = sf::Vector2f(maxspeed, maxspeed);
@@ -13,6 +14,7 @@ Auto::Auto(const Auto& vehicle) {
 	vel = vehicle.vel;
 	acc = vehicle.acc;
 	routeTracker = vehicle.routeTracker;
+	sprite = vehicle.sprite;
 }
 void Auto::update() {
 	vel += acc;
@@ -20,7 +22,9 @@ void Auto::update() {
 	pos += vel;
 	acc = sf::Vector2f(0, 0);
 	sprite.setPosition(pos);
+	cout << pos.x << " " << pos.y << endl;
 	sprite.setRotation(atan(vel.y / vel.x));
+	
 }
 void Auto::applyForce(sf::Vector2f force) {
 	acc += force;
@@ -80,9 +84,9 @@ void Auto::start() {
 void Auto::follow(const vector <Segment>& path) {
 	static int idx = 0;
 	follow(path[idx]);
-	if (pos.x > path[idx].tail.pos.x - 10) {
+	if (pos.x > path[idx].tail.pos.x - 1) {
 		if (idx + 1 < path.size()) {
-			idx++;
+		
 		}
 	}
 	

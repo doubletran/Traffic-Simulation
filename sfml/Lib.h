@@ -11,13 +11,14 @@
 #define LANE 40
 #define LINE_WIDTH 5
 #define DASH_LENGTH 10
-
+#define NULL_WEIGHT 10000
 using namespace std;
 
 float dist(const sf::Vector2f& v1, const sf::Vector2f& v2);
 float dot(const sf::Vector2f& v1, const sf::Vector2f& v2);
 void calcEquation(const sf::Vector2f& v1, const sf::Vector2f& v2, float &slope, float &intercept);
 float lineSlope(const sf::Vector2f& v1, const sf::Vector2f& v2);
+bool include(const vector<int>& src, int target);
 void limit(sf::Vector2f& vector, float max = 1);
 
 struct Point {
